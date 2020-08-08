@@ -1,0 +1,110 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://script/bullet.gd" type="Script" id=1]
+[ext_resource path="res://addons/Trail/trail_3d.gd" type="Script" id=2]
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 0.04
+height = 0.04
+
+[sub_resource type="CapsuleMesh" id=2]
+radius = 0.03
+mid_height = 0.03
+
+[sub_resource type="Shader" id=3]
+code = "shader_type spatial;
+
+uniform float emission_strength = 1.0;
+
+void fragment(){
+	
+	ALBEDO = vec3(0.0);
+	EMISSION = COLOR.rgb*emission_strength;
+	ALPHA = COLOR.a;
+}"
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 3 )
+shader_param/emission_strength = 1.0
+
+[sub_resource type="Curve" id=5]
+max_value = 2.0
+_data = [ Vector2( 0, 0.636364 ), 0.0, 8.65454, 0, 0, Vector2( 0.117647, 1.23636 ), 0.917906, 0.917906, 0, 0, Vector2( 0.705882, 0.8 ), -2.6522, -2.6522, 0, 0, Vector2( 1, 0 ), -1.89978, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=6]
+colors = PoolColorArray( 0, 0.184314, 0.729412, 1, 0, 0.184314, 0.729412, 1 )
+
+[sub_resource type="ParticlesMaterial" id=7]
+emission_shape = 1
+emission_sphere_radius = 0.5
+flag_rotate_y = true
+flag_disable_z = true
+direction = Vector3( 0, 0, 0 )
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+radial_accel = 5.0
+radial_accel_random = 0.5
+angle = 720.0
+angle_random = 1.0
+scale = 0.5
+scale_random = 1.0
+
+[sub_resource type="SpatialMaterial" id=8]
+vertex_color_use_as_albedo = true
+metallic_specular = 1.0
+roughness = 0.74
+emission_enabled = true
+emission = Color( 1, 1, 1, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+
+[sub_resource type="QuadMesh" id=9]
+material = SubResource( 8 )
+size = Vector2( 0.1, 0.1 )
+
+[node name="bullet" type="RigidBody"]
+collision_layer = 0
+gravity_scale = 0.0
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+script = ExtResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Area" type="Area" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2" type="CollisionShape" parent="Area"]
+shape = SubResource( 1 )
+
+[node name="Position3D" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.139 )
+
+[node name="Trail3D" type="ImmediateGeometry" parent="Position3D"]
+material_override = SubResource( 4 )
+script = ExtResource( 2 )
+base_width = 0.1
+width_profile = SubResource( 5 )
+color_gradient = SubResource( 6 )
+
+[node name="Particles" type="Particles" parent="."]
+emitting = false
+amount = 10
+lifetime = 0.7
+one_shot = true
+speed_scale = 0.7
+explosiveness = 0.66
+randomness = 0.56
+visibility_aabb = AABB( -2.80092, -3.07748, -3.41711, 5.60183, 6.15495, 6.83423 )
+process_material = SubResource( 7 )
+draw_pass_1 = SubResource( 9 )
+[connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]

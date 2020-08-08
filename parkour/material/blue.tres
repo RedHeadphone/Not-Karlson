@@ -1,0 +1,9 @@
+[gd_resource type="SpatialMaterial" load_steps=2 format=2]
+
+[ext_resource path="res://image/texture1.jpg" type="Texture" id=1]
+
+[resource]
+params_diffuse_mode = 3
+albedo_texture = ExtResource( 1 )
+uv1_scale = Vector3( 0.5, 0.5, 0.5 )
+uv1_triplanar_sharpness = 1.03526
