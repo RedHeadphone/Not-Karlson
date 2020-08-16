@@ -4,12 +4,12 @@
 [ext_resource path="res://addons/Trail/trail_3d.gd" type="Script" id=2]
 
 [sub_resource type="CapsuleShape" id=1]
-radius = 0.04
-height = 0.04
+radius = 0.1
+height = 0.1
 
 [sub_resource type="CapsuleMesh" id=2]
-radius = 0.03
-mid_height = 0.03
+radius = 0.1
+mid_height = 0.1
 
 [sub_resource type="Shader" id=3]
 code = "shader_type spatial;
@@ -28,8 +28,8 @@ shader = SubResource( 3 )
 shader_param/emission_strength = 1.0
 
 [sub_resource type="Curve" id=5]
-max_value = 2.0
-_data = [ Vector2( 0, 0.636364 ), 0.0, 8.65454, 0, 0, Vector2( 0.117647, 1.23636 ), 0.917906, 0.917906, 0, 0, Vector2( 0.705882, 0.8 ), -2.6522, -2.6522, 0, 0, Vector2( 1, 0 ), -1.89978, 0.0, 0, 0 ]
+max_value = 3.0
+_data = [ Vector2( 0, 2.34545 ), 0.0, 8.65454, 0, 0, Vector2( 0.095679, 2.94545 ), 0.917906, 0.917906, 0, 0, Vector2( 0.601852, 1.63636 ), -4.41818, -4.41818, 0, 0, Vector2( 1, 0 ), -1.89978, 0.0, 0, 0 ]
 
 [sub_resource type="Gradient" id=6]
 colors = PoolColorArray( 0, 0.184314, 0.729412, 1, 0, 0.184314, 0.729412, 1 )
@@ -62,7 +62,6 @@ size = Vector2( 0.1, 0.1 )
 
 [node name="bullet" type="RigidBody"]
 collision_layer = 0
-gravity_scale = 0.0
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
@@ -82,7 +81,7 @@ collision_layer = 0
 shape = SubResource( 1 )
 
 [node name="Position3D" type="Position3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.139 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.39892 )
 
 [node name="Trail3D" type="ImmediateGeometry" parent="Position3D"]
 material_override = SubResource( 4 )

@@ -25,15 +25,13 @@ func _process(delta):
 				canrelease=true
 			
 		if Input.is_action_just_pressed("graple"):
+			var b=bullet.instance()
 			var temp=gunpoint.get_global_transform().basis.z
 			var t=gunpoint.get_global_transform()
-			for i in range(3):
-				var b=bullet.instance()
-				get_node("/root/Spatial").add_child(b)
-				b.set_global_transform(t)
-				b.scale=Vector3(1,1,1)
-				b.apply_central_impulse(-temp*50+4*Vector3(rand_range(-1,1),rand_range(-1,1),rand_range(-1,1)))
-			pl.add_central_force(temp*500)
+			get_node("/root/Spatial").add_child(b)
+			b.set_global_transform(t)
+			b.scale=Vector3(1,1,1)
+			b.apply_central_impulse(-temp*50)
 			$Cube/gunpoint/Particles.emitting=true
 			shooted=true
 			canrelease=false

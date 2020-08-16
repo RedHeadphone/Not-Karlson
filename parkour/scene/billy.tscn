@@ -16,19 +16,16 @@ emission_operator = 0
 emission_on_uv2 = false
 
 [sub_resource type="SpatialMaterial" id=2]
-resource_name = "Material.003"
-params_cull_mode = 2
+resource_local_to_scene = true
 albedo_color = Color( 0, 0, 0, 1 )
-metallic = 0.5
-roughness = 0.0960784
 emission_enabled = true
 emission = Color( 0, 0, 0, 1 )
-emission_energy = 2.0
+emission_energy = 1.0
 emission_operator = 0
 emission_on_uv2 = false
 emission_texture = ExtResource( 1 )
-uv1_scale = Vector3( 6, 6, 5 )
-uv1_offset = Vector3( 0.5, -0.25, 0 )
+uv1_scale = Vector3( 5, 5, 5 )
+uv1_offset = Vector3( 0, -0.1, 0 )
 
 [sub_resource type="ArrayMesh" id=3]
 surfaces/0 = {
@@ -74,6 +71,7 @@ extents = Vector3( 0.100846, 0.112083, 0.327779 )
 extents = Vector3( 0.111872, 0.105087, 0.391961 )
 
 [node name="billy" type="Spatial"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
 
 [node name="Armature" type="Spatial" parent="."]
 
@@ -126,10 +124,10 @@ material/0 = null
 material/1 = null
 
 [node name="Physical Bone Bone" type="PhysicalBone" parent="Armature/Skeleton"]
-transform = Transform( 0.999785, 1.04355e-07, -0.0207194, -0.0207194, 1.57161e-07, -0.999785, -1.04837e-07, 1, -2.75908e-15, 0.0158968, -0.592188, 0.00491381 )
+transform = Transform( 0.999785, 1.04355e-07, -0.0207194, -0.0207194, 1.57161e-07, -0.999785, -1.04837e-07, 1, -3.41896e-15, 0.0158968, -0.592188, 0.00491381 )
 collision_layer = 5
-joint_offset = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.41593e-07, 4.56492e-16, 0.327939 )
-body_offset = Transform( 1, 1.7053e-13, 1.30385e-08, 2.20268e-13, 1, -1.39216e-15, -2.23518e-08, 1.42109e-14, 1, -2.45869e-07, 0, -0.327939 )
+joint_offset = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.51547e-07, 5.44796e-16, 0.327939 )
+body_offset = Transform( 1, 2.13163e-13, 1.67638e-08, 2.84217e-13, 1, -1.66149e-15, -2.6077e-08, -7.10543e-14, 1, -2.57045e-07, 0, -0.327939 )
 bone_name = "Bone"
 
 [node name="CollisionShape" type="CollisionShape" parent="Armature/Skeleton/Physical Bone Bone"]
@@ -137,11 +135,11 @@ transform = Transform( 0.999918, 2.13163e-14, 0.0128627, -1.42109e-13, 1, 1.1546
 shape = SubResource( 4 )
 
 [node name="Physical Bone Bone002" type="PhysicalBone" parent="Armature/Skeleton"]
-transform = Transform( -1.00004, -1.50364e-06, -0.0109139, -0.0109118, 1.42927e-07, 0.999939, -1.50339e-06, 1, 1.18024e-15, 0.255378, -1.35472, 0.00491357 )
+transform = Transform( -1.00004, -1.50364e-06, -0.0109139, -0.0109118, 1.42927e-07, 0.999939, -1.50339e-06, 1, -6.93544e-15, 0.255378, -1.35472, 0.00491357 )
 collision_layer = 5
 joint_type = 2
-joint_offset = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.09011e-06, 8.62214e-15, 0.415045 )
-body_offset = Transform( 0.999998, 1.47793e-12, -5.58794e-09, -3.29692e-12, 1, -2.07653e-14, -2.51455e-08, 2.84217e-13, 0.999999, -1.08778e-06, 0, -0.415044 )
+joint_offset = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.09088e-06, 1.31533e-14, 0.415045 )
+body_offset = Transform( 0.999998, 1.47793e-12, -7.45058e-09, -3.75167e-12, 1, -3.16813e-14, -3.16647e-08, 4.54747e-13, 0.999999, -1.08778e-06, 0, -0.415044 )
 bone_name = "Bone.002"
 joint_constraints/swing_span = 45.0
 joint_constraints/twist_span = 45.0
@@ -157,8 +155,8 @@ shape = SubResource( 5 )
 transform = Transform( -1.0001, -1.58152e-06, 5.49481e-08, 1.06543e-06, -3.87508e-07, 1, -1.58118e-06, 1, 5.46841e-07, 0.259907, -2.20572, 0.00491357 )
 collision_layer = 5
 joint_type = 2
-joint_offset = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.92147e-14, 2.8398e-26, 0.435992 )
-body_offset = Transform( 1, 1.47793e-12, -4.40713e-14, -1.47793e-12, 1, 0, -4.42884e-14, 3.41061e-13, 1, 0, 0, -0.435992 )
+joint_offset = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.85085e-14, 4.21335e-26, 0.435992 )
+body_offset = Transform( 1, 1.47793e-12, -6.53876e-14, -1.47793e-12, 1, 0, -4.42884e-14, 5.11591e-13, 1, 0, 0, -0.435992 )
 bone_name = "Bone.003"
 joint_constraints/swing_span = 45.0
 joint_constraints/twist_span = 180.0
@@ -174,11 +172,11 @@ __meta__ = {
 }
 
 [node name="Physical Bone Bone005" type="PhysicalBone" parent="Armature/Skeleton"]
-transform = Transform( -0.99969, -5.01661e-05, -0.00744636, -0.00745217, -7.70904e-07, 0.999972, -5.01461e-05, 1, 5.56814e-07, -0.219392, -1.35082, 0.00723626 )
+transform = Transform( -0.99969, -5.01661e-05, -0.00744636, -0.00745217, -7.70904e-07, 0.999972, -5.01462e-05, 1, 5.56814e-07, -0.219392, -1.35082, 0.00723626 )
 collision_layer = 2147483653
 joint_type = 2
-joint_offset = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.71839e-07, -9.77881e-09, 0.428364 )
-body_offset = Transform( 0.999999, -4.36557e-11, -1.16695e-08, -7.63976e-11, 1, -1.7053e-13, -4.21086e-09, -1.3074e-12, 1, 4.76837e-07, 9.77889e-09, -0.428364 )
+joint_offset = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.70642e-07, -1.25727e-08, 0.428364 )
+body_offset = Transform( 0.999999, -6.54836e-11, -1.44634e-08, -9.45874e-11, 1, -3.97904e-13, -7.00482e-09, -1.47793e-12, 1, 4.76837e-07, 1.25729e-08, -0.428364 )
 bone_name = "Bone.005"
 joint_constraints/swing_span = 45.0
 joint_constraints/twist_span = 45.0
@@ -191,11 +189,11 @@ transform = Transform( 1, -2.18279e-11, -1.42493e-09, 0, 1, -5.68434e-14, -1.990
 shape = SubResource( 7 )
 
 [node name="Physical Bone Bone006" type="PhysicalBone" parent="Armature/Skeleton"]
-transform = Transform( -0.999692, -4.99908e-05, 0.00735278, 0.00735113, 5.26899e-07, 0.999972, -4.99665e-05, 1, 1.282e-14, -0.219347, -2.20698, 0.00723577 )
+transform = Transform( -0.999692, -4.99907e-05, 0.00735278, 0.00735113, 5.26899e-07, 0.999972, -4.99665e-05, 1, 4.00664e-14, -0.219347, -2.20698, 0.00723577 )
 collision_layer = 5
 joint_type = 2
-joint_offset = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.31521e-07, 4.65745e-10, 0.427825 )
-body_offset = Transform( 1, -4.36557e-11, 6.0536e-09, 5.09317e-11, 1, -1.96294e-13, 5.59589e-09, 2.55795e-13, 1, -1.3411e-07, -4.65661e-10, -0.427825 )
+joint_offset = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.31122e-07, 4.65714e-10, 0.427825 )
+body_offset = Transform( 1, -6.54836e-11, 6.98492e-09, 5.09317e-11, 1, -1.22512e-13, 8.38986e-09, 2.55795e-13, 1, -1.3411e-07, -4.65661e-10, -0.427825 )
 bone_name = "Bone.006"
 joint_constraints/swing_span = 45.0
 joint_constraints/twist_span = 180.0

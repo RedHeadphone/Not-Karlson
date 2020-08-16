@@ -217,7 +217,7 @@ func cameralook(delta):
 		mousepos=Vector2()
 	head.rotate_z(deg2rad(mousepos.x*sensitivity))
 	caman+=(-mousepos.y*sensitivity)
-	caman=clamp(caman,-75,75)
+	caman=clamp(caman,-90,75)
 	camera.set_rotation_degrees(Vector3(caman,0,camside))
 	last = mousepos
 
