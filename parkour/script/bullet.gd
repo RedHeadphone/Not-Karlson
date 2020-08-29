@@ -21,6 +21,7 @@ func _on_Area_body_entered(body):
 	del=true
 	$MeshInstance.visible=false
 	$Position3D/Trail3D.visible=false
+	$Particles.set_as_toplevel(true)
 	$Particles.emitting=true
-	mode=RigidBody.MODE_STATIC
+#	mode=RigidBody.MODE_STATIC
 

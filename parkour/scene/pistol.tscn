@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://script/pistol.gd" type="Script" id=1]
 [ext_resource path="res://image/particle1.png" type="Texture" id=2]
@@ -75,6 +75,22 @@ albedo_texture = ExtResource( 2 )
 material = SubResource( 6 )
 size = Vector2( 0.1, 0.1 )
 
+[sub_resource type="Animation" id=8]
+resource_name = "recoil"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Cube:rotation_degrees")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 31.91, 1.66179e-06, 5.81258e-06 ), Vector3( 0, 0, 0 ) ]
+}
+
 [node name="gun" type="RigidBody"]
 transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 0 )
 collision_layer = 3
@@ -113,4 +129,5 @@ transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 3.35503
 depth = 0.08
 polygon = PoolVector2Array( -0.0279855, 0.151885, 0.297602, 0.148226, 0.293315, 0.0571245, 0.0671698, 0.0528374, 0.0393035, -0.11436, -0.0432233, -0.109001 )
 
-[node name="Tween" type="Tween" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/recoil = SubResource( 8 )

@@ -363,10 +363,10 @@ __meta__ = {
 }
 
 [node name="Button2" type="Button" parent="GUIPanel3D/Viewport/GUI/Panel"]
-margin_left = 153.979
-margin_top = 174.674
-margin_right = 339.979
-margin_bottom = 237.674
+margin_left = 140.898
+margin_top = 177.052
+margin_right = 326.898
+margin_bottom = 240.052
 custom_styles/hover = SubResource( 12 )
 custom_styles/pressed = SubResource( 12 )
 custom_styles/focus = SubResource( 12 )
@@ -381,10 +381,10 @@ __meta__ = {
 }
 
 [node name="Button3" type="Button" parent="GUIPanel3D/Viewport/GUI/Panel"]
-margin_left = 150.102
-margin_top = 260.888
-margin_right = 310.102
-margin_bottom = 317.888
+margin_left = 144.156
+margin_top = 259.699
+margin_right = 304.156
+margin_bottom = 316.699
 custom_styles/hover = SubResource( 12 )
 custom_styles/pressed = SubResource( 12 )
 custom_styles/focus = SubResource( 12 )
@@ -399,10 +399,10 @@ __meta__ = {
 }
 
 [node name="Button4" type="Button" parent="GUIPanel3D/Viewport/GUI/Panel"]
-margin_left = 165.642
-margin_top = 338.549
-margin_right = 406.642
-margin_bottom = 393.549
+margin_left = 143.047
+margin_top = 333.792
+margin_right = 384.047
+margin_bottom = 388.792
 custom_styles/hover = SubResource( 12 )
 custom_styles/pressed = SubResource( 12 )
 custom_styles/focus = SubResource( 12 )
@@ -426,9 +426,9 @@ custom_colors/font_color = Color( 0.972549, 0.529412, 0.529412, 1 )
 text = "(not happening btw)"
 
 [node name="Button5" type="Button" parent="GUIPanel3D/Viewport/GUI/Panel"]
-margin_left = 164.0
+margin_left = 154.656
 margin_top = 417.0
-margin_right = 278.0
+margin_right = 268.656
 margin_bottom = 481.0
 custom_styles/hover = SubResource( 12 )
 custom_styles/pressed = SubResource( 12 )

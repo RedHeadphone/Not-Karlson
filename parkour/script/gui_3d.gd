@@ -19,8 +19,8 @@ func _ready():
 	node_area.connect("mouse_entered", self, "_mouse_entered_area")
 	
 	# If the material is NOT set to use billboard settings, then avoid running billboard specific code
-	if node_quad.get_surface_material(0).params_billboard_mode == 0:
-		set_process(false)
+#	if node_quad.get_surface_material(0).params_billboard_mode == 0:
+#		set_process(false)
 
 
 func _process(_delta):

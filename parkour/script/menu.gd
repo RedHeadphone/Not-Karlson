@@ -6,9 +6,9 @@ onready var curr=get_node("/root/Spatial/GUIPanel3D")
 var resol=Vector2(640,360)
 
 func _ready():
-	pass
-#	print(ProjectSettings.get("display/window/size/height"))
-#	print(ProjectSettings.get("display/window/size/width"))	
+	print(get_viewport().get_size_override())
+	print(ProjectSettings.get("display/window/size/height"))
+	print(ProjectSettings.get("display/window/size/width"))
 
 func _process(delta):
 	pass

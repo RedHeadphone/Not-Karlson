@@ -6,7 +6,6 @@ onready var bullet=preload("res://scene/bullet.tscn")
 onready var gunpoint=$Cube/gunpoint
 onready var pl=get_node("/root/Spatial/player")
 var shooted=false
-var time=0
 
 func _physics_process(delta):
 	if isonhand:
@@ -15,16 +14,11 @@ func _physics_process(delta):
 func _process(delta):
 	if isonhand:
 		if shooted:
-			time+=delta
-			if time<=0.3:
-				rotate_x(-30*delta)
-			if time>0.3:
-				rotate_x(30*delta)
-			if time>0.6:
+			if not $AnimationPlayer.is_playing():
 				shooted=false
 				canrelease=true
 			
-		if Input.is_action_just_pressed("graple"):
+		if Input.is_action_just_pressed("graple") and not shooted:
 			var b=bullet.instance()
 			var temp=gunpoint.get_global_transform().basis.z
 			var t=gunpoint.get_global_transform()
@@ -34,5 +28,6 @@ func _process(delta):
 			b.apply_central_impulse(-temp*90)
 			$Cube/gunpoint/Particles.emitting=true
 			shooted=true
+			$AnimationPlayer.play("recoil")
 			canrelease=false
 	
