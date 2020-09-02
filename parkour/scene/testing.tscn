@@ -126,6 +126,9 @@ margin_top = 4.0
 margin_right = 113.0
 margin_bottom = 38.0
 text = "ok"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="player" parent="." instance=ExtResource( 2 )]
 transform = Transform( 0.590577, 0.806981, -3.52743e-08, 0, -4.37114e-08, -1, -0.806981, 0.590577, -2.58149e-08, 10.0435, 3.07513, 7.35017 )
