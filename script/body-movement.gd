@@ -174,7 +174,7 @@ func movement(delta):
 	if abs(relvel.y)>maxspeed:
 		y=0
 	direction=direction.normalized()*speed*delta
-	if groundcheck.is_colliding() and  Input.is_action_just_pressed("ui_select"):#
+	if groundis and  Input.is_action_just_pressed("ui_select"):#
 		direction.y=450
 	self.add_central_force(direction)
 	
@@ -205,7 +205,7 @@ func wallrun():
 			let*=15
 			add_central_force(-walljumpdir*10)
 			if Input.is_action_just_pressed("ui_select"):
-				add_central_force((walljumpdir+Vector3(0,0.6,0))*500)
+				add_central_force((walljumpdir+Vector3(0,0.6,0))*600)
 		if vel.y<0:
 			add_central_force(Vector3(0,9.8,0)*wallspeed/10)
 	else:
