@@ -203,9 +203,11 @@ func wallrun():
 				let=let-PI
 				let=cos(let)
 			let*=15
-			add_central_force(-walljumpdir*10)
+			
 			if Input.is_action_just_pressed("ui_select"):
-				add_central_force((walljumpdir+Vector3(0,0.6,0))*600)
+				add_central_force((walljumpdir*20+Vector3(0,0.6,0))*30)
+			else:
+				add_central_force(-walljumpdir*10)
 		if vel.y<0:
 			add_central_force(Vector3(0,9.8,0)*wallspeed/10)
 	else:

@@ -43,17 +43,17 @@ extents = Vector3( 15, 0.5, 3 )
 material = ExtResource( 2 )
 size = Vector3( 30, 1, 6 )
 
-[sub_resource type="BoxShape" id=15]
+[sub_resource type="BoxShape" id=12]
 extents = Vector3( 13, 0.5, 2.6 )
 
-[sub_resource type="CubeMesh" id=14]
+[sub_resource type="CubeMesh" id=13]
 material = ExtResource( 4 )
 size = Vector3( 26, 1, 5.2 )
 
-[sub_resource type="BoxShape" id=12]
+[sub_resource type="BoxShape" id=14]
 extents = Vector3( 2, 0.7, 3 )
 
-[sub_resource type="CubeMesh" id=13]
+[sub_resource type="CubeMesh" id=15]
 material = ExtResource( 3 )
 size = Vector3( 4, 1.4, 6 )
 
@@ -73,7 +73,7 @@ margin_right = 50.3826
 margin_bottom = 23.4387
 
 [node name="player" parent="." instance=ExtResource( 1 )]
-transform = Transform( 0.590577, 0.806981, -3.52743e-08, 0, -4.37114e-08, -1, -0.806981, 0.590577, -2.58149e-08, -85.3583, 2.38996, 0 )
+transform = Transform( 0.590577, 0.806981, -3.52743e-08, 0, -4.37114e-08, -1, -0.806981, 0.590577, -2.58149e-08, -4.16658, 2.38996, 0 )
 
 [node name="StaticBody" type="StaticBody" parent="."]
 transform = Transform( 2, 0, 0, 0, 1.5, 0, 0, 0, 1.7, 0, 0, 0 )
@@ -161,19 +161,19 @@ material/0 = null
 
 [node name="CollisionShape3" type="CollisionShape" parent="StaticBody3"]
 transform = Transform( -1.21231e-07, -1.0884e-07, 1, -0.668053, 0.744113, 0, -0.744113, -0.668053, -1.62921e-07, -19.0279, -9.04361, -17.4904 )
-shape = SubResource( 15 )
+shape = SubResource( 12 )
 
 [node name="MeshInstance" type="MeshInstance" parent="StaticBody3/CollisionShape3"]
-mesh = SubResource( 14 )
+mesh = SubResource( 13 )
 material/0 = null
 
 [node name="CollisionShape2" type="CollisionShape" parent="StaticBody3"]
 transform = Transform( -0.681079, 0.549158, 0, -0.97628, -0.681079, 0, 0, 0, 1, -1.29141, 3.62845, 0 )
-shape = SubResource( 12 )
+shape = SubResource( 14 )
 
 [node name="MeshInstance" type="MeshInstance" parent="StaticBody3/CollisionShape2"]
 transform = Transform( 1, -2.98023e-08, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-mesh = SubResource( 13 )
+mesh = SubResource( 15 )
 material/0 = null
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
