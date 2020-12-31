@@ -3,7 +3,12 @@ extends RigidBody
 var caman=0
 var sensitivity=0.3
 var vel=Vector3()
-var speed =600
+var speed =40000
+var airspeed=10000
+var groundspeed=40000
+var counter=60000
+var jumping=30000
+var jumpingspeed=900
 var maxspeed=12
 var direction=Vector3()
 var mousepos=Vector2()
@@ -15,7 +20,7 @@ var wallspeed
 var walljumpdir
 var groundis=false
 var legcontactcount=0
-var counter=200
+
 var crouching=false
 
 onready var camera=$head/neck
@@ -153,9 +158,9 @@ func movement(delta):
 	direction=Vector3()
 	
 	if not $RayCast.is_colliding() and not groundis:
-		speed=400
+		speed=airspeed
 	else:
-		speed=600
+		speed=groundspeed
 	
 	if Input.is_action_pressed("ui_up") and (counter!=40 or not $RayCast.is_colliding()):
 		direction-=aim.z
@@ -175,7 +180,7 @@ func movement(delta):
 		y=0
 	direction=direction.normalized()*speed*delta
 	if groundis and  Input.is_action_just_pressed("ui_select"):#
-		direction.y=450
+		direction.y=jumping
 	self.add_central_force(direction)
 	
 	if groundcheck.is_colliding() or groundis:
@@ -205,7 +210,7 @@ func wallrun():
 			let*=15
 			
 			if Input.is_action_just_pressed("ui_select"):
-				add_central_force((walljumpdir*20+Vector3(0,0.6,0))*30)
+				add_central_force((walljumpdir*20+Vector3(0,0.6,0))*jumpingspeed)
 			else:
 				add_central_force(-walljumpdir*10)
 		if vel.y<0:

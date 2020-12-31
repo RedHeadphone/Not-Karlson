@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="parkour"
+config/name="Not Karlson"
 run/main_scene="res://scene/menu.tscn"
 boot_splash/image="res://image/godot_splash2.png"
 config/icon="res://image/icon.png"
@@ -102,6 +102,10 @@ test={
 3d_physics/layer_2="guns"
 3d_render/layer_3="overlap"
 3d_physics/layer_3="wall runnable and grapable"
+
+[physics]
+
+3d/default_gravity=20.0
 
 [rendering]
 
