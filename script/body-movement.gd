@@ -9,7 +9,7 @@ var groundspeed=40000
 var counter=60000
 var jumping=30000
 var jumpingspeed=900
-var maxspeed=12
+var maxspeed=8
 var direction=Vector3()
 var mousepos=Vector2()
 var last=Vector2()
@@ -54,7 +54,6 @@ func _process(delta):
 	cameralook(delta)
 
 func _physics_process(delta):
-	get_node("/root/Spatial/Control/Label").text=str(Engine.get_frames_per_second())
 	if Input.is_action_just_pressed("ui_accept"):
 		get_tree().reload_current_scene()
 	movement(delta)
