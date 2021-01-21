@@ -102,4 +102,9 @@ randomness = 0.56
 visibility_aabb = AABB( -2.80092, -3.07748, -3.41711, 5.60183, 6.15495, 6.83423 )
 process_material = SubResource( 7 )
 draw_pass_1 = SubResource( 9 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
 [connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

@@ -3,7 +3,6 @@ extends RigidBody
 enum{
 	STATIC,
 	RIGID,
-	PHYBONE,
 	KINETIC
 }
 
@@ -14,7 +13,6 @@ var isonhand:bool=false
 var canrelease:bool=true
 var grab:bool=false
 onready var pointer=get_node("/root/Spatial/player/head/neck/Camera/aim")
-#onready var cam=get_node("/root/Spatial/player/head/neck/Camera")
 onready var gunp=$Cube/gunpoint
 onready var mesh=$Cube
 onready var grappoint=$grappoint
@@ -29,7 +27,7 @@ func _process(delta):
 		tween.start()
 		if grab:
 			canrelease=false
-			var height=gunp.get_global_transform().origin.distance_to(grapple_Point)
+			#var height=gunp.get_global_transform().origin.distance_to(grapple_Point)
 			$ImmediateGeometry.Update(delta)
 			gunp.look_at(grapple_Point,Vector3.UP)
 		else:
@@ -48,8 +46,6 @@ func _physics_process(delta):
 					body=KINETIC
 				if pointer.get_collider() is RigidBody:
 					body=RIGID
-				if pointer.get_collider() is PhysicalBone:
-					body=PHYBONE
 				grab=true
 				bodyitself=pointer.get_collider()
 				grapple_Point=pointer.get_collision_point()
@@ -62,15 +58,11 @@ func _physics_process(delta):
 		if grab:
 			var le=grapple_Point-gunp.get_global_transform().origin
 			if body==STATIC or body==KINETIC:
-				#get_node("/root/Spatial/player").add_force(le*power,gunp.get_global_transform().origin-bodyitself.get_global_transform().origin)
 				if lastlen<le.length():
-					get_node("/root/Spatial/player").add_force(le*1.1+le.normalized(),gunp.get_global_transform().origin-bodyitself.get_global_transform().origin)
+					get_node("/root/Spatial/player").add_force(le*110+le.normalized(),gunp.get_global_transform().origin-bodyitself.get_global_transform().origin)
 				else:
-					get_node("/root/Spatial/player").add_force(le*0.5,gunp.get_global_transform().origin-bodyitself.get_global_transform().origin)
+					get_node("/root/Spatial/player").add_force(le*70,gunp.get_global_transform().origin-bodyitself.get_global_transform().origin)
 			if body==RIGID:
 				get_node("/root/Spatial/player").add_force(le*power/2,gunp.get_global_transform().origin-bodyitself.get_global_transform().origin)
 				bodyitself.add_force((-le/2),grapple_Point-bodyitself.get_global_transform().origin)
-			if body==PHYBONE:
-				get_node("/root/Spatial/player").add_force(le*power/2,gunp.get_global_transform().origin-bodyitself.get_global_transform().origin)
-				bodyitself.apply_impulse(grapple_Point-bodyitself.get_global_transform().origin,(-le/2)*delta)
 			lastlen=le.length()

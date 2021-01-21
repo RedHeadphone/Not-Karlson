@@ -23,5 +23,8 @@ func _on_Area_body_entered(body):
 	$Position3D/Trail3D.visible=false
 	$Particles.set_as_toplevel(true)
 	$Particles.emitting=true
-#	mode=RigidBody.MODE_STATIC
 
+
+
+func _on_Timer_timeout():
+	queue_free()

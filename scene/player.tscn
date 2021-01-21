@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://script/body-movement.gd" type="Script" id=1]
 [ext_resource path="res://script/camera.gd" type="Script" id=2]
 [ext_resource path="res://image/nice1.jpg" type="Texture" id=3]
+[ext_resource path="res://image/aim.png" type="Texture" id=4]
 
 [sub_resource type="PhysicsMaterial" id=1]
 friction = 0.0
@@ -153,5 +154,28 @@ collision_mask = 2
 [node name="CollisionShape" type="CollisionShape" parent="gun check"]
 transform = Transform( 1, 2.98023e-08, 0, -2.98023e-08, 1, 8.88178e-15, -1.77636e-15, -5.32907e-15, 1, 0, 0, 0 )
 shape = SubResource( 8 )
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -17.5
+margin_top = -17.5
+margin_right = 17.5
+margin_bottom = 17.5
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="body_entered" from="RayCast/check" to="." method="_on_jump_body_entered"]
 [connection signal="body_exited" from="RayCast/check" to="." method="_on_jump_body_exited"]

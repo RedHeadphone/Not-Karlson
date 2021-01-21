@@ -6,10 +6,10 @@ var vel=Vector3()
 var speed =40000
 var airspeed=10000
 var groundspeed=40000
-var counter=60000
+var counter=6000
 var jumping=30000
-var jumpingspeed=900
-var maxspeed=8
+var jumpingspeed=750
+var maxspeed=15
 var direction=Vector3()
 var mousepos=Vector2()
 var last=Vector2()
@@ -17,6 +17,7 @@ var aim=Vector3()
 var theta
 var relvel=Vector3()
 var wallspeed
+var wallrunning=false
 var walljumpdir
 var groundis=false
 var legcontactcount=0
@@ -156,7 +157,7 @@ func movement(delta):
 	var y=0
 	direction=Vector3()
 	
-	if not $RayCast.is_colliding() and not groundis:
+	if (not $RayCast.is_colliding() and not groundis) or wallrunning:
 		speed=airspeed
 	else:
 		speed=groundspeed
@@ -178,7 +179,7 @@ func movement(delta):
 	if abs(relvel.y)>maxspeed:
 		y=0
 	direction=direction.normalized()*speed*delta
-	if groundis and  Input.is_action_just_pressed("ui_select"):#
+	if groundis and  Input.is_action_just_pressed("ui_select"):
 		direction.y=jumping
 	self.add_central_force(direction)
 	
@@ -189,7 +190,7 @@ func movement(delta):
 
 func wallrun():
 	if groundis and not groundcheck.is_colliding():
-		counter=150
+#		counter=150
 		walljumpdir=wallchecker.get_global_transform().basis.y
 		wallspeed=vel
 		wallspeed.y=0
@@ -199,6 +200,7 @@ func wallrun():
 			wallspeed=wallspeed.length()
 		if not (wallchecker.get_child(0).is_colliding() and wallchecker.get_child(1).is_colliding()):
 			wallchecker.rotate_y(0.78539816)
+			wallrunning=false
 		else:
 			let =walljumpdir.angle_to(camera.get_global_transform().basis.x)
 			if let<PI/2:
@@ -207,14 +209,15 @@ func wallrun():
 				let=let-PI
 				let=cos(let)
 			let*=15
-			
+			wallrunning=true
 			if Input.is_action_just_pressed("ui_select"):
-				add_central_force((walljumpdir*20+Vector3(0,0.6,0))*jumpingspeed)
+				add_central_force((walljumpdir*40+Vector3(0,0.6,0))*jumpingspeed)
 			else:
 				add_central_force(-walljumpdir*10)
 		if vel.y<0:
-			add_central_force(Vector3(0,9.8,0)*wallspeed/10)
+			add_central_force(Vector3(0,9.8,0)*wallspeed*10)
 	else:
+		wallrunning=false
 		let=0
 
 func cameralook(delta):
@@ -229,9 +232,9 @@ func cameralook(delta):
 
 func crouch():
 	if crouching:
-		counter=40
+		counter=500
 	else:
-		counter=200
+		counter=6000
 	if Input.is_action_just_pressed("ui_slide"):
 		crouching=true
 		if gunpicked:
@@ -256,9 +259,9 @@ func crouch():
 		add_central_force(Vector3(0,1,0))
 
 func countermovement(mag,delta,aim,x,y):
-	if (abs(mag.x) > 0.01  and x==0) or (mag.x < 0.01 and x > 0) or (mag.x > 0.01 and x < 0):
+	if (abs(mag.x) > 0.01  and x==0) or (mag.x>0.01 and x<0) or (mag.x<0.01 and x>0):
 		add_central_force(delta* mag.x*aim.z*counter)
-	if (abs(mag.y) > 0.01  and y==0) or (mag.y < 0.01 and y > 0) or (mag.y > 0.01 and y < 0):
+	if (abs(mag.y) > 0.01  and y==0) or (mag.y>0.01 and y<0) or (mag.y<0.01 and y>0):
 		add_central_force(delta* mag.y*aim.x*counter)
 
 func _on_jump_body_entered(body):
