@@ -40,6 +40,7 @@ vertex_color_use_as_albedo = true
 [node name="gun" type="RigidBody"]
 transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 0 )
 collision_layer = 2147483651
+mass = 5.0
 physics_material_override = SubResource( 1 )
 gravity_scale = 0.32
 can_sleep = false
