@@ -27,7 +27,6 @@ func _process(delta):
 		tween.start()
 		if grab:
 			canrelease=false
-			#var height=gunp.get_global_transform().origin.distance_to(grapple_Point)
 			$ImmediateGeometry.Update(delta)
 			gunp.look_at(grapple_Point,Vector3.UP)
 		else:

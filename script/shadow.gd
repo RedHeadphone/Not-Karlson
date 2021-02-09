@@ -1,10 +1,7 @@
 extends ImmediateGeometry
 
-#onready var sun=get_node("/root/Spatial/Sun")
-
 func _ready():
 	pass
-	#sun=sun.get_global_transform().basis.z
 
 func shadowdraw(loc):
 	clear()
