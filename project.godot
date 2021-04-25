@@ -10,7 +10,6 @@ config_version=4
 
 _global_script_classes=[  ]
 _global_script_class_icons={
-
 }
 
 [application]
@@ -109,4 +108,4 @@ test={
 [rendering]
 
 quality/filters/anisotropic_filter_level=8
-environment/default_environment="res://default_env.tres"
+environment/default_environment="res://good_quality.tres"

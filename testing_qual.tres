@@ -1,0 +1,25 @@
+[gd_resource type="Environment" load_steps=3 format=2]
+
+[ext_resource path="res://image/nice1.jpg" type="Texture" id=1]
+
+[sub_resource type="PanoramaSky" id=1]
+panorama = ExtResource( 1 )
+
+[resource]
+background_mode = 2
+background_sky = SubResource( 1 )
+background_energy = 0.6
+ambient_light_color = Color( 0.886275, 0.945098, 0.945098, 1 )
+ambient_light_energy = 0.2
+ambient_light_sky_contribution = 0.0
+tonemap_mode = 3
+tonemap_exposure = 0.8
+ss_reflections_depth_tolerance = 0.1
+dof_blur_far_distance = 26.27
+dof_blur_far_transition = 14.47
+dof_blur_far_amount = 0.06
+glow_enabled = true
+glow_intensity = 1.2
+glow_strength = 0.3
+glow_bloom = 0.05
+glow_blend_mode = 0
