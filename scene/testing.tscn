@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://material/black.tres" type="Material" id=1]
 [ext_resource path="res://scene/player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scene/graplinggun.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scene/fps.gd" type="Script" id=4]
 [ext_resource path="res://scene/Shotgun.tscn" type="PackedScene" id=8]
 
 [sub_resource type="PhysicsMaterial" id=1]
@@ -40,6 +41,7 @@ size = Vector3( 0.4, 12, 0.4 )
 [sub_resource type="CubeMesh" id=11]
 
 [node name="Spatial" type="Spatial"]
+script = ExtResource( 4 )
 
 [node name="shotgun" parent="." instance=ExtResource( 8 )]
 transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, -0.282513, 2.16573, 0.0662411 )
@@ -233,4 +235,22 @@ directional_shadow_depth_range = 1
 directional_shadow_max_distance = 86.0
 __meta__ = {
 "_editor_description_": ""
+}
+
+[node name="Control" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control"]
+margin_left = 7.72984
+margin_top = 6.54064
+margin_right = 47.7298
+margin_bottom = 20.5406
+rect_scale = Vector2( 2, 2 )
+text = "ok"
+__meta__ = {
+"_edit_use_anchors_": false
 }
